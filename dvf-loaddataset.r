@@ -1,6 +1,6 @@
 ################################################################################
 # DVF (Données de Valeur Foncières) : https://explore.data.gouv.fr/fr/immobilier
-# training: ventes Chaville/Viroflay/Versailles < 2024, prediction: ventes Chaville/Viroflay/Versailles 2024 ou liste explicite à estimer
+# training: ventes Versailles < 2024, prediction: ventes Versailles 2024 ou liste explicite à estimer
 # source: https://explore.data.gouv.fr/fr/immobilier?onglet=carte&filtre=tous&lqt=46.89392&lng=2.18672&zoom=12.00&lat=48.80794&code=92022&level=commune
 #
 recode_str_int <- function(df, feature) {
@@ -16,35 +16,11 @@ if (setdebug==1) {
 }
 
 # setsource
-# 0: dvf-chaville
-# 1: dvf-viroflay
-# 2: dvf-chaville+2 samples
-# 3: dvf-viroflay+1 sample
 # 4: dvf-versailles
 # 5: dvf-versailles sample
 #
 library(dplyr)
-if (setsource==0) {
-	df0<-read.csv("c:\\users\\steph\\downloads\\dvf-chaville.csv")
-	pryear="2024"
-
-} else if (setsource==1) {
-	df0<-read.csv("c:\\users\\steph\\downloads\\dvf-viroflay.csv")
-	pryear="2024"
-
-} else if (setsource==2) {
-	df0<-read.csv("c:\\users\\steph\\downloads\\dvf-chaville.csv")
-	dfn<-read.csv("c:\\ML\\dvfnew.csv",sep=";")
-	dfn=filter(dfn,code_postal==92370)
-	df0<-rbind(df0,dfn)
-	pryear="2025"
-} else if (setsource==3) {
-	df0<-read.csv("c:\\users\\steph\\downloads\\dvf-viroflay.csv")
-	dfn<-read.csv("c:\\ML\\dvfnew.csv",sep=";")
-	dfn=filter(dfn,code_postal==78220)
-	df0<-rbind(df0,dfn)
-	pryear="2025"
-} else if (setsource==4) {
+if (setsource==4) {
 	df0<-read.csv("c:\\users\\steph\\downloads\\dvf-versailles.csv")
 	pryear="2024"
 } else if (setsource==5) {
