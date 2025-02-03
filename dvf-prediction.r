@@ -9,10 +9,6 @@ setgbm=1
 setsvr=1
 
 # setsource
-# 0: dvf-chaville training<2024, prediction=2024 done	>> setpca=0 (same code_postal => no eigen value)
-# 1: dvf-viroflay training<2024, prediction=2024 done	>> setpca=0 (same code_postal => no eigen value)
-# 2: dvf-chaville+2 samples training<=2024, prediction=2025 new	>> setpca=0 (same code_postal => no eigen value)
-# 3: dvf-viroflay+1 samples training<=2024, prediction=2025 new	>> setpca=0 (same code_postal => no eigen value)
 # 4: dvf-versailles
 # 5: dvf-versailles prediction
 setsource=5
